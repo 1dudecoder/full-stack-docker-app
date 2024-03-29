@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Run Prisma generate to generate Prisma Client
-RUN prisma generate
+RUN npx prisma generate
 
 # Expose the port on which your Node.js application will run
 EXPOSE 4000
