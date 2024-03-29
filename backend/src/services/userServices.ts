@@ -32,6 +32,7 @@ class userServices {
     async getAllUser() {
         try {
           let data = await userrepo.getAllUser();
+          console.log(data, "getall user services--->")
           return data;
         } catch (err) {
           console.log(

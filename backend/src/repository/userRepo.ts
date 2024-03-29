@@ -32,6 +32,7 @@ class UserRepository {
   async getAllUser() {
     try {
       const allUsers = await prisma.user.findMany();
+      console.log(allUsers, "myalluser respo--->")
       return allUsers;
     } catch (error) {
       console.log(error);

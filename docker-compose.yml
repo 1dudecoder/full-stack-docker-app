@@ -2,13 +2,27 @@ version: '3.3'
 
 services:
   backend:
-    image: my-node-app
+    build:
+      context: ./backend
+      dockerfile: dockerfile
     container_name: my-node-container
     ports:
       - "4000:4000"
     environment:
       - PORT=4000
-      - DATABASE_URL="mongodb://santynitin7:BCFpmwt2FCwds9wb@cluster0.ueffmqc.mongodb.net/prisma-2?retryWrites=true&w=majority&appName=Cluster0"
+      - DATABASE_URL=mongodb+srv://santynitin7:BCFpmwt2FCwds9wb@cluster0.ueffmqc.mongodb.net/prisma-2?retryWrites=true&w=majority&appName=Cluster0
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
+    container_name: my-frontend-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
     networks:
       - app-network
 
